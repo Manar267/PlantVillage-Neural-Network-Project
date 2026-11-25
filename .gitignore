@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data and generated artifacts (do not upload the dataset)
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Model checkpoints and experiment outputs
+models/*
+!models/.gitkeep
+results/figures/*
+!results/figures/.gitkeep
+results/*.csv
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
