@@ -30,7 +30,8 @@ Models are selected and tuned using validation metrics; final test metrics are e
 | :--- | :--- | :---: | :---: | :--- |
 | Trivial Baseline (Majority Class) | Val | `0.0994` | `0.0046` | Always predicts `Orange___Haunglongbing_(Citrus_greening)` |
 | Trivial Baseline (Majority Class) | Test | `0.0994` | `0.0046` | Majority-class reference benchmark |
-| Simple Learned Baseline | Val / Test | `TBD` | `TBD` | Update once run completes |
+| Simple Learned Baseline (LogReg, 32x32) | Val | `0.5870` | `0.4574` | Sampled subset (3k train / 1k val) |
+| Simple Learned Baseline (LogReg, 32x32) | Test | `0.5970` | `0.4944` | Sampled subset (1k test) |
 | Model A: Custom CNN (from scratch) | Val / Test | `TBD` | `TBD` | Built from scratch in Keras |
 | Model B: Pretrained CNN (Frozen Base) | Val / Test | `TBD` | `TBD` | Frozen VGG16 base (ImageNet weights) |
 | Model C: Fine-Tuned Pretrained CNN | Val / Test | `TBD` | `TBD` | Fine-tuned top layers (report 3-seed mean ± std) |
