@@ -3,7 +3,7 @@
 Course: AIE231 – Neural Networks  
 Institution: Alamein International University  
 Track: Image Classification  
-Dataset: PlantVillage (`55,425` verified images across `39` classes in project split; TFDS catalog notes `54,303` images across `38` classes)
+Dataset: PlantVillage (`55,425` verified images across `39` classes in project split; TFDS catalog notes `54,303` images across `39` classes)
 
 ## Project status
 Initial milestone documentation in progress. Dataset sources and version notes, class imbalance rationale (`Macro-F1`), team roles, and baseline results are documented below; full model training and ablations follow.
