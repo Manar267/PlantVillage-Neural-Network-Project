@@ -1,55 +1,44 @@
-# PlantVillage Neural Network Project
+# PlantVillage Leaf Disease Classification (AIE231 Project)
 
-Course: AIE231 – Neural Networks  
-Institution: Alamein International University  
-Track: Image Classification  
-Dataset: PlantVillage (54,303 images; 38 classes, subject to verification against the selected download)
+- **Course:** AIE231 – Neural Networks
+- **Institution:** Alamein International University
+- **Track:** Image Classification
 
-## Project status
-Initial repository scaffold. Dataset version, license, split strategy, preprocessing decisions, and model configurations must be documented after inspection.
+## 1. Problem Statement
+This project addresses multi-class plant disease and species classification from leaf photographs using neural networks in TensorFlow/Keras.
+- **Target Users:** Farmers, agronomists, and agricultural extension workers needing visual screening of crop leaf health.
+- **Prediction & Error Cost:** Given a leaf image, the model predicts one of **39 classes** across **55,425** total images (`38,797` train, `8,314` validation, and `8,314` test). False negatives on crop diseases can delay intervention and cause yield loss, whereas false positives can cause unnecessary treatment costs. Because classes are imbalanced, **Macro F1-score** (alongside per-class precision/recall and accuracy) is reported so minority classes are not masked by majority classes.
 
-## Planned models
-1. Custom CNN
-2. VGG16 with frozen convolutional base
-3. Fine-tuned VGG16
-## Problem Formulation
+## 2. Dataset
+- **Dataset:** PlantVillage leaf disease dataset (`55,425` verified images across `39` classes; zero missing values, zero duplicates, and zero split overlap).
+- **Source Link:** `[Add exact dataset URL here]`
+- **Local Data Setup:** Raw images are stored outside Git and referenced via relative `image_path` entries. Configure the dataset root path (`IMAGES_ROOT`) as documented in `data/README.md`.
 
-Smallholder farmers and agricultural extension workers need a reliable, automated way to identify plant species and leaf diseases from smartphone leaf images before infections spread across fields. Given a single RGB leaf image, the model predicts one of the 38 plant species/disease classes in the PlantVillage dataset. Wrong predictions carry asymmetric costs: a **false negative** (classifying a diseased leaf as healthy) can allow a contagious crop disease to spread and reduce yield, whereas a **false positive** (classifying a healthy leaf as diseased) can cause unnecessary pesticide use and extra cost.
+## 3. Planned Models & Baselines
+- **Baselines:**
+  1. Trivial Baseline (majority-class prediction)
+  2. Simple Learned Baseline (logistic/linear classifier on downsampled image features)
+- **Neural Networks (Keras):**
+  - **Model A:** Custom CNN built from scratch
+  - **Model B:** Pretrained VGG16 with frozen base and a new classification head (ImageNet weights)
+  - **Model C:** Fine-tuned VGG16 (top layers unfrozen with a small learning rate; evaluated across at least 3 seeds)
 
-- **Input shape:** `(224, 224, 3)` RGB image (or `(128, 128, 3)` during fast baseline/ablation runs so each training run stays under 30 minutes on a free Colab/Kaggle GPU).
-- **Output:** Probability distribution over the 38 classes (`Softmax` output layer).
-- **Loss function:** `CategoricalCrossentropy` (for one-hot encoded labels) or `SparseCategoricalCrossentropy` (for integer class labels).
-- **Primary metric:** **Macro-F1** (alongside per-class Recall and Confusion Matrix).
-- **Why this metric:** PlantVillage has class imbalance across its 38 classes, so overall accuracy can be dominated by larger classes and hide poor performance on smaller or visually similar disease classes. Macro-F1 gives equal weight to every class so errors on minority classes are clearly reflected.
+## 4. Results Summary
+Models are selected and tuned using validation metrics; final test metrics are evaluated once on the held-out test set.
 
-## Team Roles (5-Member Team)
+| Model | Split | Accuracy | Macro F1 | Notes |
+| :--- | :--- | :---: | :---: | :--- |
+| Trivial Baseline (Majority Class) | Val | `0.0994` | `0.0046` | Always predicts `Orange___Haunglongbing_(Citrus_greening)` |
+| Trivial Baseline (Majority Class) | Test | `0.0994` | `0.0046` | Majority-class reference benchmark |
+| Simple Learned Baseline | Val / Test | `TBD` | `TBD` | Update once run completes |
+| Model A: Custom CNN (from scratch) | Val / Test | `TBD` | `TBD` | Built from scratch in Keras |
+| Model B: Pretrained CNN (Frozen Base) | Val / Test | `TBD` | `TBD` | Frozen VGG16 base (ImageNet weights) |
+| Model C: Fine-Tuned Pretrained CNN | Val / Test | `TBD` | `TBD` | Fine-tuned top layers (report 3-seed mean ± std) |
 
-| Member | Role(s) | Main Responsibilities |
-| :--- | :--- | :--- |
-| Rodina Mahmoud Adel Ghanem | Tech Lead & Baseline/Analysis Engineer (Merged Roles 1 & 3) | Problem formulation, repo coordination/reviews, final 3-seed run & summary table, EDA, baselines, and Model A comparison |
-| Manar Samir (`Manar267`) |  Experimentation 
-Engineer  | Repository setup & team coordination |
-| Haneen Wael (`haneen-wael`) |  Data Engineer  | Repository files & pipeline tasks |
-| Member 4 | *(Confirm assigned role)* | Assigned work package & neural experiment |
-| Member 5 | *(Confirm assigned role)* | Assigned work package & neural experiment |
-## Repository layout
-- `data/`: local dataset files; dataset contents are not committed to Git.
-- `notebooks/`: exploratory analysis.
-- `src/data/`: data loading and preprocessing.
-- `src/models/`: model architectures.
-- `src/experiments/`: controlled experiment runner and logging.
-- `configs/`: shared configuration.
-- `results/`: generated metrics and figures.
-- `models/`: saved model artifacts.
-- `app/`: demonstration application.
+## 5. Setup and Reproducibility
+- **Random Seeds:** Fixed seeds are used across experiments (`SEED = 42` for development/ablations; at least 3 seeds for final evaluation).
+- **Dependencies:** Package versions are pinned in `requirements.txt`.
 
-## Setup
-Create and activate a Python virtual environment, then install:
+### Install
 ```bash
 pip install -r requirements.txt
-```
-
-The exact dataset download and training commands will be added after the team confirms the dataset source/version and data format.
-
-## Reproducibility
-All experiments should record the model, data split/version, random seed, optimizer, learning rate, batch size, epochs, and validation metrics. The test set must be held out until final evaluation.
