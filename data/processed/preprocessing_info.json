@@ -1,0 +1,19 @@
+{
+    "number_of_classes": 39,
+    "original_images": 55448,
+    "clean_images": 55425,
+    "removed_duplicates": 23,
+    "train_images": 38797,
+    "validation_images": 8314,
+    "test_images": 8314,
+    "image_size": [
+        224,
+        224
+    ],
+    "normalization": "0-1",
+    "batch_size": 32,
+    "augmentation": [
+        "RandomRotation",
+        "RandomZoom"
+    ]
+}
