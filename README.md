@@ -27,8 +27,7 @@ Smallholder farmers and agricultural extension workers need a reliable, automate
 | Member | Role(s) | Main Responsibilities |
 | :--- | :--- | :--- |
 | Rodina Mahmoud Adel Ghanem | Tech Lead & Baseline/Analysis Engineer (Merged Roles 1 & 3) | Problem formulation, repo coordination/reviews, final 3-seed run & summary table, EDA, baselines, and Model A comparison |
-| Manar Samir (`Manar267`) |  Experimentation 
-Engineer  | Repository setup & team coordination |
+| Manar Samir (`Manar267`) |  Experimentation Engineer  | Repository setup & team coordination |
 | Haneen Wael (`haneen-wael`) |  Data Engineer  | Repository files & pipeline tasks |
 | Member 4 | *(Confirm assigned role)* | Assigned work package & neural experiment |
 | Member 5 | *(Confirm assigned role)* | Assigned work package & neural experiment |
