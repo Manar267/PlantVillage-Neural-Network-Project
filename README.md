@@ -38,15 +38,18 @@ Smallholder farmers and agricultural extension workers need a reliable, automate
 | Model B: Pretrained CNN (Frozen Base) | Val / Test | `TBD` | `TBD` | Frozen VGG16 base (ImageNet weights) |
 | Model C: Fine-Tuned Pretrained CNN | Val / Test | `TBD` | `TBD` | Fine-tuned top layers (3-seed evaluation) |
 
-## Team Roles (5-Member Team)
+
+## Team Roles
 
 | Member | Role(s) | Main Responsibilities |
 | :--- | :--- | :--- |
 | Rodina Mahmoud Adel Ghanem | Tech Lead & Baseline/Analysis Engineer (Merged Roles 1 & 3) | Problem formulation, repo coordination/reviews, final 3-seed run & summary table, EDA, baselines, and Model A comparison |
-| Manar Samir (`Manar267`) | Experimentation Engineer | Repository setup & team coordination |
-| Haneen Wael (`haneen-wael`) | Data Engineer | Repository files & pipeline tasks |
-| Member 4 | *(Confirm assigned role)* | Assigned work package & neural experiment |
-| Member 5 | *(Confirm assigned role)* | Assigned work package & neural experiment |
+| Manar Samir (`Manar267`) | Experimentation Engineer | Repository setup, team coordination, experiment tracking, and hyperparameter tuning |
+| Haneen Wael (`haneen-wael`) | Data Engineer | Data loading, cleaning, splitting, preprocessing pipeline, and imbalance/augmentation checks |
+| Jana El-Manzalawy | Model Architect (Role 4) | Architecture design, parameter counts, regularization, and model module implementation |
+
+
+
 
 ## Repository layout
 - `data/`: local dataset files; dataset contents are not committed to Git.
